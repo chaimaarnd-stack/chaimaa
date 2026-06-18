@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf9ff;
+  --surface: #ffffff;
+  --primary: #4840b8;
+  --primary-dark: #3730a3;
+  --secondary: #f040c8;
+  --secondary-light: #ff4fd8;
+  --text: #1f1f3a;
+  --text-secondary: #63638a;
+  --border: #e8e7ff;
+  --gradient-main: linear-gradient(
+    135deg,
+    #4840b8 0%,
+    #7d7cff 50%,
+    #f040c8 100%
+  );
+  --gradient-accent: linear-gradient(135deg, #f040c8 0%, #ff4fd8 100%);
+
+  --color-bg: var(--background);
+  --color-bg-secondary: #f3f2ff;
+  --color-card: var(--surface);
+  --color-text: var(--text);
+  --color-text-secondary: var(--text-secondary);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-dark);
+  --color-success: #22c55e;
+  --color-info: #3b82f6;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}
+
+@layer utilities {
+  .bg-gradient-main {
+    background: var(--gradient-main);
+  }
+
+  .bg-gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background: var(--primary);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background: var(--primary-dark);
+  }
+
+  .btn-secondary {
+    background: var(--secondary);
+    color: #ffffff;
+  }
+
+  .btn-secondary:hover {
+    background: var(--secondary-light);
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--secondary-light);
+  color: #ffffff;
+}
+
+#checkout label {
+  color: var(--color-text);
+}
+
+#checkout input,
+#checkout select {
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+#checkout input:focus,
+#checkout select:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 4px rgb(240 64 200 / 18%);
+}
